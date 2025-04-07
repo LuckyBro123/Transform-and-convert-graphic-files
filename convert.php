@@ -48,6 +48,7 @@ function processImage($file, $output_folder, $xResolution, $yResolution, $base_d
 	// Вычисляем новые размеры с сохранением пропорций
 	$ratio = min($xResolution / $original_width, $yResolution / $original_height);
 	$new_width = intval($original_width * $ratio);
+	$new_height = intval($original_height * $ratio);
 
 	// Создаём новое изображение с новыми размерами
 	$new_image = imagecreatetruecolor($new_width, $new_height);
@@ -55,7 +56,7 @@ function processImage($file, $output_folder, $xResolution, $yResolution, $base_d
 
 	// Конструируем новый путь и имя файла с расширением .webp
 	$relative_path = substr($file, strlen($base_dir)); // Относительный путь внутри исходной папки
-	// Используем pathinfo для получения информации о пути
+	// надо отрезать расширение файла и добавить .webp
 	$path_parts = pathinfo($relative_path);
 	$relative_path_without_extension = $path_parts['dirname'] . DIRECTORY_SEPARATOR . $path_parts['filename'];
 	$output_path = $output_folder . $relative_path_without_extension . '.webp';
