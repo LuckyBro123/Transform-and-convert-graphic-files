@@ -48,7 +48,6 @@ function processImage($file, $output_folder, $xResolution, $yResolution, $base_d
 	// Вычисляем новые размеры с сохранением пропорций
 	$ratio = min($xResolution / $original_width, $yResolution / $original_height);
 	$new_width = intval($original_width * $ratio);
-	$new_height = intval($original_height * $ratio);
 
 	// Создаём новое изображение с новыми размерами
 	$new_image = imagecreatetruecolor($new_width, $new_height);
